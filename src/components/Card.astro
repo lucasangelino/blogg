@@ -1,19 +1,13 @@
-<div class="post-card">
-    <a href="" class="block overflow-hidden rounded-2xl">
-      <img class="object-cover w-full h-56" src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="" />
-      
-      <div class="p-4 bg-gray-900">
-        <p class="text-xs text-gray-500">website.com</p>
-        
-        <h5 class="text-sm text-white">How to position your furniture for positivity</h5>
-        
-        <p class="mt-1 text-xs text-gray-500">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum nobis aliquid accusamus? Sint, sequi voluptas.</p>
-      </div>
-  </a>
-</div>
-
-<style>
-  .post-card {
-    height: 100px;
-  }
-</style>
+---
+const { post } = Astro.props;
+---
+<a href={post.url}>
+  <div class="flex flex-col max-h-52 my-3 items-center bg-white 
+              rounded-lg border shadow-md md:flex-row md:max-w-xl">
+    <img class="object-cover w-full h-100 rounded-l-lg" src={post.frontmatter.thumnail} alt={post.frontmatter.title}>
+    <div class="flex flex-col justify-between p-4 leading-normal">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{post.frontmatter.title}</h5>
+        <p class="mb-3 font-normal text-gray-700 ">{post.frontmatter.description}</p>
+    </div>
+  </div>
+</a>

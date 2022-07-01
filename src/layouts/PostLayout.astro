@@ -1,0 +1,31 @@
+---
+import Navbar from '../components/Navbar.astro'
+import Footer from '../components/Footer.astro'
+
+const { content } = Astro.props;
+---
+<html>
+  <head>
+    <title>{content.title}</title>
+  </head>
+  <body>
+    <Navbar />
+    <div class="min-h-screen container mx-auto px-96">
+      <div class="flex items-center ">
+        <img src="https://midu.dev/images/tags/performance.png" class="w-20 mr-7" alt="Title Image">
+        <div>
+          <h1 class="text-4xl">{content.title}</h1>
+          <span class="text-sm">{content.date}</span>
+          <span class="text-sm">👨‍💻{content.readtime} minutos de lectura</span>
+          
+            <a href="#">              
+              <span class="text-sm font-semibold hover:text-blue-500">¿Una errata? Edita el artículo</span>
+            </a>
+        </div>
+
+      </div>
+      <slot />
+    </div>
+    <Footer />
+  </body>
+</html>

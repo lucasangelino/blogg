@@ -1,6 +1,7 @@
 ---
 import Navbar from '../components/Navbar.astro'
 import Footer from '../components/Footer.astro'
+import SideBar from '../components/SideBar.astro';
 
 const { title } = Astro.props;
 ---
@@ -16,20 +17,20 @@ const { title } = Astro.props;
 <body>
   <Navbar />
 
-  <div class="container mx-auto h-100">
-    <div class="grid grid-cols-4 gap-4">
-      <div class="col-span-3">
-        <div class="flex flex-wrap">
+  <div class="container mx-auto h-100 flex justify-center">
+    <div class="grid grid-cols-4">
+      <div class="col-span-3 ">
+        <div class="flex justify-center">
           <slot />
+
         </div>
       </div>
       <div class="col-span-1">
-        
+        <SideBar />        
       </div>
     </div>
-  </div> 
-<!--     
-  <Footer /> -->
+  </div>
+  <Footer />
 </body>
 </html>
 
@@ -53,17 +54,5 @@ const { title } = Astro.props;
 
   body {
     margin: 0;
-  }
-
-  :global(h1) {
-    font-size: var(--font-size-xl);
-  }
-
-  :global(h2) {
-    font-size: var(--font-size-lg);
-  }
-
-  :global(code) {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
   }
 </style>
