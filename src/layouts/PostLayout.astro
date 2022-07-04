@@ -14,18 +14,38 @@ const { content } = Astro.props;
       <div class="flex items-center ">
         <img src="https://midu.dev/images/tags/performance.png" class="w-20 mr-7" alt="Title Image">
         <div>
-          <h1 class="text-4xl">{content.title}</h1>
-          <span class="text-sm">{content.date}</span>
-          <span class="text-sm">👨‍💻{content.readtime} minutos de lectura</span>
-          
-            <a href="#">              
-              <span class="text-sm font-semibold hover:text-blue-500">¿Una errata? Edita el artículo</span>
+          <h1 class="text-4xl mb-2">{content.title}</h1>
+          <span class="text-sm">{content.date} - </span>
+          <span class="text-sm">{content.readtime} minutos de lectura - </span>
+            <a href="https://github.com/lucasangelino/blogg/pulls" target="_blank">              
+              <span class="text-sm font-semibold hover:text-blue-500">¿Una errata? Edita el articulo</span>
             </a>
         </div>
-
       </div>
-      <slot />
+      <div class="my-20">
+        <slot />
+      </div>
     </div>
-    <Footer />
+    <Footer /> 
   </body>
 </html>
+
+<style is:global>
+  * {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 35px;
+    color: #0068b8;
+  }
+  h2 {
+    color: blueviolet;
+  }
+  p {
+    font-size: 18px;
+    margin: 30px 0;
+    color: #333;
+  }
+</style>
