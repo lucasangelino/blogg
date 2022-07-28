@@ -42,3 +42,29 @@ The original definition states that “every class should have only one responsi
 Although this component is relatively short now, it is already doing quite a few things - it fetches data, filters it, renders the component itself as well as individual list items. Let’s see how we can break it down.
 
 First of all, whenever we have connected useState and useEffect hooks, it’s a good opportunity to extract them into a custom hook:
+
+<Image src="/img/solid_en_react_2.svg" alt="Img" />
+
+Now our useUsers hook is concerned with one thing only - fetching users from API. It also made our main component more readable, not only because it got shorter, but also because we replaced the structural hooks that you needed to decipher the purpose of with a domain hook the purpose of which is immediately obvious from its name.
+
+Next, let’s look at the JSX that our component renders. Whenever we have a loop mapping over an array of objects, we should pay attention to the complexity of JSX it produces for individual array items. If it’s a one-liner that doesn’t have any event handlers attached to it, it’s totally fine to keep it inline, but for a more complex markup it could be a good idea to extract it into a separate component:
+
+<Image src="/img/solid_en_react_3.svg" alt="Img" />
+
+Just as with a previous change, we made our main component smaller and more readable by extracting the logic for rendering user items into a separate component.
+
+Finally, we have the logic for filtering out inactive users from the list of all users we get from an API. This logic is relatively isolated and it could be reused in other parts of the application, so we can easily extract it into a utility function:
+
+<Image src="/img/solid_en_react_4.svg" alt="Img" />
+
+At this point, our main component is short and straightforward enough that we can stop breaking it down and call it a day. However, if we look a bit closer, we’ll notice that it’s still doing more than it should. Currently, our component is fetching data and then applying filtering to it, but ideally, we’d just want to get the data and render it, without any additional manipulation. So as the last improvement, we can encapsulate this logic into a new custom hook:
+
+<Image src="/img/solid_en_react_5.svg" alt="Img" />
+
+Here we created useActiveUsers hook to take care of fetching and filtering logic (we also memoized filtered data for good measures), while our main component is left to do the bare minimum - render the data it gets from the hook.
+
+Now depending on our interpretation of “one thing”, we can argue that the component is still first getting the data, and then rendering it, which is not “one thing”. We could split it even further, calling a hook in one component and then passing the result to another one as props, but I found very few cases where this is actually beneficial in real-world applications, so let’s be forgiving with the definition and accept “rendering data the component gets” as “one thing”.
+
+To summarize, following the single-responsibility principle, we effectively take a large monolithic piece of code and make it more modular. Modularity is great because it makes our code easier to reason about, smaller modules are easier to test and modify, we’re less likely to introduce unintentional code duplication, and as a result, our code becomes more maintainable.
+
+It should be said, that what we’ve seen here is a contrived example, and in your own components you may find that the dependencies between different moving parts are much more intertwined. In many cases, this could be an indication of poor design choices - using bad abstractions, creating universal do-it-all components, incorrectly scoping the data, etc., and thus can be untangled with a broader refactoring.
