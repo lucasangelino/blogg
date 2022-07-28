@@ -2,9 +2,9 @@
 const { post } = Astro.props;
 ---
 <a href={post.url}>
-  <div class="flex flex-col max-h-52 my-3 items-center bg-white 
+  <div class="flex flex-col h-32 my-3 items-center bg-white 
               rounded-lg border shadow-md md:flex-row md:max-w-xl">
-    <img class="object-cover w-full h-100 rounded-l-lg" src={post.frontmatter.thumnail} alt={post.frontmatter.title}>
+    <img class="object-cover w-80 h-32 rounded-l-lg" src={post.frontmatter.thumnail} alt={post.frontmatter.title}>
     <div class="flex flex-col justify-between p-4 leading-normal">
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{post.frontmatter.title}</h5>
         <p class="mb-3 font-normal text-gray-700 ">{post.frontmatter.description}</p>

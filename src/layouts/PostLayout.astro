@@ -10,8 +10,9 @@ const { content } = Astro.props;
   </head>
   <body>
     <Navbar />
-    <div class="min-h-screen container mx-auto px-96">
-      <div class="flex items-center ">
+    <div class="min-h-screen container mx-auto px-52 mt-10">
+      <div class="flex items-center px-24">
+        <!-- change url to https://github.com/lucasangelino/blogg/blob/main/src/pages/posts/{POST_NAME} -->
         <img src="https://midu.dev/images/tags/performance.png" class="w-20 mr-7" alt="Title Image">
         <div>
           <h1 class="text-4xl mb-2">{content.title}</h1>
@@ -34,18 +35,10 @@ const { content } = Astro.props;
   * {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
-  h1 {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 700;
-    font-size: 35px;
-    color: #0068b8;
-  }
-  h2 {
-    color: blueviolet;
-  }
+
   p {
     font-size: 18px;
-    margin: 30px 0;
-    color: #333;
+    margin: 40px 0;
+    color: rgb(43, 41, 41);
   }
 </style>

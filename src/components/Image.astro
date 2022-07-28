@@ -1,0 +1,18 @@
+---
+const { src, alt } = Astro.props;
+---
+<div>
+    <img src={src} alt={alt} />
+</div>
+
+<style>
+    div {
+        margin: 20px auto;
+        width: 80%;
+        height: 80%;
+        object-fit: cover;
+    }
+    img {
+        border-radius: 10px;
+    }
+</style>
