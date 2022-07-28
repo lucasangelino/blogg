@@ -3,7 +3,7 @@ layout: "../../layouts/PostLayout.astro"
 setup: |
   import Image from '../../components/Image.astro'
   import Title from '../../components/Title.astro'
-title: "SOLID en React (1/5)"
+title: "Princios Solid en React JS Parte 1 (SRP)"
 author: "Lucas Angelino"
 date: "1 de Julio de 2022"
 readtime: "10"
@@ -13,11 +13,12 @@ description: "En este primer articulo de la saga vas a descubrir los conceptos d
 
 <Image src="/img/solid_en_react_1.webp" alt="Img" />
 
-# Motivación
+## Motivación
 
-As the software industry grows and makes mistakes, the best practices and good software design principles emerge and conceptualize to avoid repeating the same mistakes in the future. The world of object-oriented programming (OOP) in particular is a goldmine of such best practices, and SOLID is unquestionably one of the more influential ones.
+Muchas veces queremos llevar nuestro nivel de programación a un nivel superior, pero si te gusta React como a mí, te habrás dado cuenta que Js es un lenguaje tremendamente flexible. Uno puede hacer cualquier cosa de cualquier manera, por lo que es muy sencillo alejarse de aquellas buenas prácticas que sí estan mas arraigadas en otros lenguajes como los POO.
+Es por eso que esta es una guía facil (espero) de seguir para que puedas aprender a implementar buenas practicas en React.
 
-SOLID is an acronym, where each letter represents one out of five design principles which are:
+SOLID es un acrónimo que se usa para referirse a una serie de conceptos que nos ayudan a organizar nuestras aplicaciones.
 
 - Single responsibility principle (SRP)
 - Open-closed principle (OCP)

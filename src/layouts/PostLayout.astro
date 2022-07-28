@@ -10,20 +10,22 @@ const { content } = Astro.props;
   </head>
   <body>
     <Navbar />
-    <div class="min-h-screen container mx-auto px-52 mt-10">
-      <div class="flex items-center px-24">
+    <div class="min-h-screen mt-10 mx-12">
+      <div class="flex items-center" >
         <!-- change url to https://github.com/lucasangelino/blogg/blob/main/src/pages/posts/{POST_NAME} -->
-        <img src="https://midu.dev/images/tags/performance.png" class="w-20 mr-7" alt="Title Image">
-        <div>
-          <h1 class="text-4xl mb-2">{content.title}</h1>
-          <span class="text-sm">{content.date} - </span>
-          <span class="text-sm">{content.readtime} minutos de lectura - </span>
-            <a href="https://github.com/lucasangelino/blogg/pulls" target="_blank">              
-              <span class="text-sm font-semibold hover:text-blue-500">¿Una errata? Edita el articulo</span>
-            </a>
+        <!-- <img src="https://midu.dev/images/tags/performance.png" class="w-20 mr-7" alt="Title Image"> -->
+        <div class="my-16">
+          <h1 class="font-semibold text-5xl sm:text-8xl">{content.title}</h1>
+          <div class="my-4">
+            <span class="text-3xl">{content.date} - </span>
+            <span class="text-3xl">{content.readtime} minutos de lectura 👨‍💻 </span>
+              <!-- <a href="https://github.com/lucasangelino/blogg/pulls" target="_blank">              
+                <span class="text-sm sm:text-3xl font-semibold hover:text-blue-500">¿Una errata? Edita el articulo</span>
+              </a> -->
+          </div>
         </div>
       </div>
-      <div class="my-20">
+      <div class="my-8">
         <slot />
       </div>
     </div>
@@ -36,19 +38,15 @@ const { content } = Astro.props;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
 
-  p {
-    font-size: 18px;
-    margin: 40px 0;
+  p, li {
+    font-size: 3rem;
+    margin: 40px 3rem;
     color: rgb(37, 36, 36);
   }
-  h1 {
-    font-size: 36px;
-    margin: 40px 0;
-    color: #715DF2
-  }
   h2 {
-    font-size: 28px;
-    margin: 40px 0;
-    color: #715DF2
+    color: #0068b8;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 40px 3rem;
   }
 </style>
