@@ -15,12 +15,12 @@ const { content } = Astro.props;
         <!-- change url to https://github.com/lucasangelino/blogg/blob/main/src/pages/posts/{POST_NAME} -->
         <!-- <img src="https://midu.dev/images/tags/performance.png" class="w-20 mr-7" alt="Title Image"> -->
         <div class="my-16 mx-auto">
-          <h1 class="font-semibold text-5xl">{content.title}</h1>
+          <h1 class="font-semibold md:text-8xl lg:text-4xl">{content.title}</h1>
           <div class="my-4">
-            <span class="text-xl">{content.date} - </span>
-            <span class="text-xl">{content.readtime} minutos de lectura 👨‍💻 </span>
+            <span class="font-normal md:text-3xl lg:text-xl">{content.date} - </span>
+            <span class="md:text-3xl lg:text-xl">{content.readtime} minutos de lectura 👨‍💻 </span>
               <a href="https://github.com/lucasangelino/blogg/pulls" target="_blank">              
-                <span class="text-xl font-semibold hover:text-blue-500">¿Una errata? Edita el articulo</span>
+                <span class="md:text-3xl lg:text-xl font-semibold hover:text-blue-500">¿Una errata? Edita el articulo</span>
               </a>
           </div>
         </div>
@@ -39,7 +39,7 @@ const { content } = Astro.props;
   }
 
   p, li {
-    font-size: 1.5rem;
+    font-size: 16px;
     margin: 40px 1rem;
     color: rgb(37, 36, 36);
   }
