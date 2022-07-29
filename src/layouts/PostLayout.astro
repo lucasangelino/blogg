@@ -40,20 +40,27 @@ const { content } = Astro.props;
 
   p, li {
     color: #333;
-    font-size: 18px;
-    line-height: 28px;
+    font-size: 2rem;
+    line-height: inherit;
     margin: 40px auto;
     margin-bottom: 32px;
     word-break: break-word;
   }
   h2 {
     color: #0068b8;
-    font-size: 24px;
+    font-size: 30px;
     font-weight: 600;
     margin: 40px auto;
   }
   img {
     height: 400px;
     margin: 0 auto;
+  }
+  /* add media for mobile */
+  @media (max-width: 768px) {
+    p, li, h2 {
+      font-size: 4rem;
+      line-height: inherit;
+    }
   }
 </style>
