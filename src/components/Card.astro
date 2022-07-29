@@ -2,12 +2,12 @@
 const { post } = Astro.props;
 ---
 <a href={post.url}>
-  <div class="flex flex-col h-32 my-3 items-center bg-white 
+  <div class="flex flex-col h-40 my-3 items-center bg-white 
   rounded-sm border shadow-md md:flex-row md:max-w-xl">
-    <img class="object-cover w-80 h-32 rounded-sm" src={post.frontmatter.thumnail} alt={post.frontmatter.title}>
-    <div class="flex flex-col justify-between p-4 leading-normal">
-        <h5 class="mb-2 text-md font-bold tracking-tight text-gray-900">{post.frontmatter.title}</h5>
-        <p class="mb-3 font-normal text-sm text-gray-700 ">{post.frontmatter.description}</p>
+    <img class="object-cover w-full h-full rounded-sm" src={post.frontmatter.thumnail} alt={post.frontmatter.title}>
+    <div class="flex flex-col h-full pl-4 place-content-center">
+        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">{post.frontmatter.title}</h5>
+        <p class="sm:text-normal md:text-sm text-base text-gray-700 ">{post.frontmatter.description}</p>
     </div>
   </div>
 </a>

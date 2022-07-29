@@ -35,12 +35,13 @@ const { title, description } = Astro.props;
 <body>
   <Navbar />
 
-  <div class="min-h-screen mx-auto px-3 max-w-screen-lg flex justify-center">
+  <div class="min-h-screen mx-auto px-3 max-w-screen-lg flex justify-center mb-10">
     <div class="grid md:grid-cols-4 sm:grid-cols-1">
       <div class="md:col-span-3 sm:col-span-1">
         <div class="flex justify-center sm:mx-0 md:mx-5 min-h-screen">
           <slot />
         </div>
+        <div class="divide-y"></div>
       </div>
       <div class="col-span-1 md:mt-0">
         <SideBar />
