@@ -15,57 +15,64 @@ description: "En este primer articulo de la saga vas a descubrir los conceptos d
 
 ## Motivación
 
-Muchas veces queremos llevar nuestro nivel de programación a un nivel superior, pero si te gusta React como a mí, te habrás dado cuenta que Js es un lenguaje tremendamente flexible. Uno puede hacer cualquier cosa de cualquier manera, por lo que es muy sencillo alejarse de aquellas buenas prácticas que sí estan mas arraigadas en otros lenguajes como los POO.
-Es por eso que esta es una guía facil (espero) de seguir para que puedas aprender a implementar buenas practicas en React.
+A medida que la industria del software crece y comete errores, las mejores prácticas y los buenos principios de diseño de software surgen y se conceptualizan para evitar repetir los mismos errores en el futuro. El mundo de la programación orientada a objetos (OOP) en particular es una mina de oro de tales mejores prácticas, y SOLID es, sin duda, uno de los más influyentes.
 
-SOLID es un acrónimo que se usa para referirse a una serie de conceptos que nos ayudan a organizar nuestras aplicaciones.
+SOLID es un acrónimo, donde cada letra representa uno de los cinco principios de diseño que son:
 
-- Single responsibility principle (SRP)
-- Open-closed principle (OCP)
-- Liskov substitution principle (LSP)
-- Interface segregation principle (ISP)
-- Dependency inversion principle (DIP)
+Principio de responsabilidad única (SRP)
+Principio abierto-cerrado (OCP)
+Principio de sustitución de L iskov (LSP)
+Principio de segregación de interfaz (ISP )
+Principio de inversión de dependencia (DIP)
 
-In this article, we’ll talk about the importance of each principle and see how we can apply the learnings from SOLID in React applications.
+En este artículo, hablaremos sobre la importancia de cada principio y veremos cómo podemos aplicar los aprendizajes de SOLID en aplicaciones React.
 
-Before we begin though, there’s a big caveat. SOLID principles were conceived and outlined with object-oriented programming language in mind. These principles and their explanation heavily rely on concepts of classes and interfaces, while JS doesn’t really have either. What we often think of as “classes” in JS are merely class look-alikes simulated using its prototype system, and interfaces aren’t part of the language at all (although the addition of TypeScript does help a bit). Even more, the way we write modern React code is far from being object-oriented -  if anything, it feels more functional.
+Sin embargo, antes de comenzar, hay una gran advertencia . Los principios de _SOLID_ se concibieron y delinearon teniendo en cuenta el lenguaje de programación orientado a objetos. Estos principios y su explicación se basan en gran medida en conceptos de clases e interfaces, mientras que JS en realidad no tiene ninguno de los dos. Lo que a menudo consideramos como "clases" en JS son simplemente clases similares simuladas usando su sistema prototipo, y las interfaces no son parte del lenguaje en absoluto (aunque la adición de TypeScript ayuda un poco). Aún más, la forma en que escribimos el código React moderno está lejos de estar orientado a objetos; en todo caso, se siente más funcional.
 
-The good news though, software design principles such as SOLID are language agnostic and have a high level of abstraction, meaning that if we squint hard enough and take some liberties with interpretation, we’ll be able to apply them to our more functional React code.
+Sin embargo, la buena noticia es que los principios de diseño de software como _SOLID_ son independientes del lenguaje y tienen un alto nivel de abstracción, lo que significa que si entrecerramos los ojos lo suficiente y nos tomamos algunas libertades con la interpretación, podremos aplicarlos a nuestro código React más funcional. .
 
-So let’s take some liberties
+Así que tomémonos algunas libertades.
 
-## Single responsibility principle (SRP)
+## Principio de responsabilidad única (SRP)
 
-The original definition states that “every class should have only one responsibility”, a.k.a. do exactly one thing. This principle is the easiest to interpret, as we can simply extrapolate the definition to “every function/module/component should do exactly one thing”.
+La definición original establece que _"cada clase debe tener una sola responsabilidad"_, es decir, hacer exactamente una cosa. Este principio es el más fácil de interpretar, ya que simplemente podemos extrapolar la definición a “cada función/módulo/componente debe hacer exactamente una cosa”.
 
-<Image src="/img/solid_in_react_srp.svg" alt="Img" />
+De los cinco principios, _SRP_ es el más fácil de seguir, pero también es el más impactante, ya que mejora drásticamente la calidad de nuestro código. Para garantizar que nuestros componentes hagan una cosa, podemos:
 
-Although this component is relatively short now, it is already doing quite a few things - it fetches data, filters it, renders the component itself as well as individual list items. Let’s see how we can break it down.
+dividir componentes grandes que hacen demasiado en componentes más pequeños
+extraer código no relacionado con la funcionalidad del componente principal en funciones de utilidad separadas
+encapsular la funcionalidad conectada en ganchos personalizados
 
-First of all, whenever we have connected useState and useEffect hooks, it’s a good opportunity to extract them into a custom hook:
+Ahora veamos cómo podemos aplicar este principio. Comenzaremos considerando el siguiente componente de ejemplo que muestra una lista de usuarios activos:
 
-<Image src="/img/solid_en_react_2.svg" alt="Img" />
+<Image src="/img/solid_en_react_SRP_1.svg" alt="solid_en_react_SRP_1 descripcion del problema" />
 
-Now our useUsers hook is concerned with one thing only - fetching users from API. It also made our main component more readable, not only because it got shorter, but also because we replaced the structural hooks that you needed to decipher the purpose of with a domain hook the purpose of which is immediately obvious from its name.
+Aunque este componente es relativamente corto ahora, ya está haciendo bastantes cosas: obtiene datos, los filtra, representa el componente en sí mismo, así como elementos de lista individuales. Veamos cómo podemos descomponerlo.
 
-Next, let’s look at the JSX that our component renders. Whenever we have a loop mapping over an array of objects, we should pay attention to the complexity of JSX it produces for individual array items. If it’s a one-liner that doesn’t have any event handlers attached to it, it’s totally fine to keep it inline, but for a more complex markup it could be a good idea to extract it into a separate component:
+En primer lugar, siempre que tengamos enlaces conectados **useState**, **useEffectes** una buena oportunidad para extraerlos en un enlace personalizado:
 
-<Image src="/img/solid_en_react_3.svg" alt="Img" />
+<Image src="/img/solid_en_react_SRP_2.svg" alt="solid_en_react_SRP_1 descripcion del problema" />
 
-Just as with a previous change, we made our main component smaller and more readable by extracting the logic for rendering user items into a separate component.
+Ahora nuestro **useUsersenlace** se refiere a una sola cosa: obtener usuarios de la API. También hizo que nuestro componente principal fuera más legible, no solo porque se hizo más corto, sino también porque reemplazamos los ganchos estructurales que necesitabas para descifrar el propósito con un gancho de dominio cuyo propósito es inmediatamente obvio por su nombre.
 
-Finally, we have the logic for filtering out inactive users from the list of all users we get from an API. This logic is relatively isolated and it could be reused in other parts of the application, so we can easily extract it into a utility function:
+A continuación, veamos el _JSX_ que representa nuestro componente. Siempre que tengamos un mapeo de bucle sobre una matriz de objetos, debemos prestar atención a la complejidad de _JSX_ que produce para elementos de matriz individuales. Si es una sola línea que no tiene ningún controlador de eventos adjunto, está bien mantenerlo en línea, pero para un marcado más complejo, podría ser una buena idea extraerlo en un componente separado:
 
-<Image src="/img/solid_en_react_4.svg" alt="Img" />
+<Image src="/img/solid_en_react_SRP_3.svg" alt="solid_en_react_SRP_1 descripcion del problema" />
 
-At this point, our main component is short and straightforward enough that we can stop breaking it down and call it a day. However, if we look a bit closer, we’ll notice that it’s still doing more than it should. Currently, our component is fetching data and then applying filtering to it, but ideally, we’d just want to get the data and render it, without any additional manipulation. So as the last improvement, we can encapsulate this logic into a new custom hook:
+Al igual que con un cambio anterior, hicimos que nuestro componente principal fuera más pequeño y más legible al extraer la lógica para representar los elementos del usuario en un componente separado.
 
-<Image src="/img/solid_en_react_5.svg" alt="Img" />
+Finalmente, tenemos la lógica para filtrar usuarios inactivos de la lista de todos los usuarios que obtenemos de una _API_. Esta lógica está relativamente aislada y podría reutilizarse en otras partes de la aplicación, por lo que podemos extraerla fácilmente en una función de utilidad:
 
-Here we created useActiveUsers hook to take care of fetching and filtering logic (we also memoized filtered data for good measures), while our main component is left to do the bare minimum - render the data it gets from the hook.
+<Image src="/img/solid_en_react_SRP_4.svg" alt="solid_en_react_SRP_1 descripcion del problema" />
 
-Now depending on our interpretation of “one thing”, we can argue that the component is still first getting the data, and then rendering it, which is not “one thing”. We could split it even further, calling a hook in one component and then passing the result to another one as props, but I found very few cases where this is actually beneficial in real-world applications, so let’s be forgiving with the definition and accept “rendering data the component gets” as “one thing”.
+En este punto, nuestro componente principal es lo suficientemente corto y sencillo como para dejar de desglosarlo y darlo por terminado. Sin embargo, si miramos un poco más de cerca, notaremos que todavía está haciendo más de lo que debería. Actualmente, nuestro componente está obteniendo datos y luego aplicándoles filtros, pero idealmente, solo queremos obtener los datos y representarlos, sin ninguna manipulación adicional. Entonces, como última mejora, podemos encapsular esta lógica en un nuevo gancho personalizado:
 
-To summarize, following the single-responsibility principle, we effectively take a large monolithic piece of code and make it more modular. Modularity is great because it makes our code easier to reason about, smaller modules are easier to test and modify, we’re less likely to introduce unintentional code duplication, and as a result, our code becomes more maintainable.
+<Image src="/img/solid_en_react_SRP_5.svg" alt="solid_en_react_SRP_1 descripcion del problema" />
 
-It should be said, that what we’ve seen here is a contrived example, and in your own components you may find that the dependencies between different moving parts are much more intertwined. In many cases, this could be an indication of poor design choices - using bad abstractions, creating universal do-it-all components, incorrectly scoping the data, etc., and thus can be untangled with a broader refactoring.
+Aquí creamos _useActiveUsersun_ gancho para encargarnos de la lógica de búsqueda y filtrado **(también memorizamos datos filtrados para obtener buenas medidas)**, mientras que nuestro componente principal se deja hacer lo mínimo: representar los datos que obtiene del gancho.
+
+Ahora, dependiendo de nuestra interpretación de "una cosa", podemos argumentar que el componente primero obtiene los datos y luego los procesa, lo cual no es "una cosa". Podríamos dividirlo aún más, llamando a un gancho en un componente y luego pasando el resultado a otro como accesorios, pero encontré muy pocos casos en los que esto sea realmente beneficioso en aplicaciones del mundo real, así que seamos indulgentes con la definición y aceptemos "renderizar los datos que obtiene el componente" como "una cosa".
+
+_Para resumir, siguiendo el principio de responsabilidad única, efectivamente tomamos una gran pieza de código monolítica y la hacemos más modular. La modularidad es excelente porque hace que nuestro código sea más fácil de razonar, los módulos más pequeños son más fáciles de probar y modificar, es menos probable que introduzcamos la duplicación de código no intencional y, como resultado, nuestro código se vuelve más fácil de mantener._
+
+Debe decirse que lo que hemos visto aquí es un ejemplo artificial, y en sus propios componentes puede encontrar que las dependencias entre las diferentes partes móviles están mucho más entrelazadas. En muchos casos, esto podría ser una indicación de elecciones de diseño deficientes: uso de malas abstracciones, creación de componentes universales que lo hacen todo, alcance incorrecto de los datos, etc., y por lo tanto se puede desenredar con una refactorización más amplia.
