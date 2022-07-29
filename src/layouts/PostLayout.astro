@@ -10,18 +10,18 @@ const { content } = Astro.props;
   </head>
   <body>
     <Navbar />
-    <div class="min-h-screen mt-10 mx-12">
+    <div class="min-h-screen mt-10 mx-auto max-w-screen-lg px-3">
       <div class="flex items-center" >
         <!-- change url to https://github.com/lucasangelino/blogg/blob/main/src/pages/posts/{POST_NAME} -->
         <!-- <img src="https://midu.dev/images/tags/performance.png" class="w-20 mr-7" alt="Title Image"> -->
-        <div class="my-16">
-          <h1 class="font-semibold text-5xl sm:text-8xl">{content.title}</h1>
+        <div class="my-16 mx-auto">
+          <h1 class="font-semibold text-5xl">{content.title}</h1>
           <div class="my-4">
-            <span class="text-3xl">{content.date} - </span>
-            <span class="text-3xl">{content.readtime} minutos de lectura 👨‍💻 </span>
-              <!-- <a href="https://github.com/lucasangelino/blogg/pulls" target="_blank">              
-                <span class="text-sm sm:text-3xl font-semibold hover:text-blue-500">¿Una errata? Edita el articulo</span>
-              </a> -->
+            <span class="text-xl">{content.date} - </span>
+            <span class="text-xl">{content.readtime} minutos de lectura 👨‍💻 </span>
+              <a href="https://github.com/lucasangelino/blogg/pulls" target="_blank">              
+                <span class="text-xl font-semibold hover:text-blue-500">¿Una errata? Edita el articulo</span>
+              </a>
           </div>
         </div>
       </div>
@@ -39,8 +39,8 @@ const { content } = Astro.props;
   }
 
   p, li {
-    font-size: 3rem;
-    margin: 40px 3rem;
+    font-size: 1.5rem;
+    margin: 40px 1rem;
     color: rgb(37, 36, 36);
   }
   h2 {

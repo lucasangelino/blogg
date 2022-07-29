@@ -5,14 +5,13 @@ import Card from '../components/Card.astro';
 // Get posts
 const posts = await Astro.glob('./posts/*.md');
 ---
-<Layout title="Blog de Tecnología">
+<Layout title="Codigo Alpha">
 	<div class="">
 		<h1 class="my-10 font-medium text-2xl">Ultimos Posts</h1>
 		{
 			posts.map(post => {
 				return <Card post={post} />
 			})
-		}
-		
+		}		
 	</div>
 </Layout>

@@ -14,7 +14,7 @@ const { title, description } = Astro.props;
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name='description' content={description} />
 		<meta name='theme-color' content='#fff600' />
-		<link rel='icon' href='/favicon.svg' />
+		<link rel='icon' href='/favicon.ico' />
 		<link rel='mask-icon' href='/mask-icon.svg' color='#000000' />
 
 		<meta property='og:url' content='https://miduconf.com' />
@@ -35,15 +35,14 @@ const { title, description } = Astro.props;
 <body>
   <Navbar />
 
-  <div class="container mx-auto h-100 flex justify-center">
-    <div class="grid grid-cols-4">
-      <div class="col-span-3 ">
-        <div class="flex justify-center">
+  <div class="min-h-screen mx-auto px-3 max-w-screen-lg flex justify-center">
+    <div class="grid md:grid-cols-4 sm:grid-cols-1">
+      <div class="md:col-span-3 sm:col-span-1">
+        <div class="flex justify-center mx-5 mb-14">
           <slot />
-
         </div>
       </div>
-      <div class="col-span-1">
+      <div class="col-span-1 mt-12">
         <SideBar />
       </div>
     </div>

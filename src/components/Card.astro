@@ -3,11 +3,11 @@ const { post } = Astro.props;
 ---
 <a href={post.url}>
   <div class="flex flex-col h-32 my-3 items-center bg-white 
-              rounded-lg border shadow-md md:flex-row md:max-w-xl">
-    <img class="object-cover w-80 h-32 rounded-l-lg" src={post.frontmatter.thumnail} alt={post.frontmatter.title}>
+  rounded-sm border shadow-md md:flex-row md:max-w-xl">
+    <img class="object-cover w-80 h-32 rounded-sm" src={post.frontmatter.thumnail} alt={post.frontmatter.title}>
     <div class="flex flex-col justify-between p-4 leading-normal">
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{post.frontmatter.title}</h5>
-        <p class="mb-3 font-normal text-gray-700 ">{post.frontmatter.description}</p>
+        <h5 class="mb-2 text-md font-bold tracking-tight text-gray-900">{post.frontmatter.title}</h5>
+        <p class="mb-3 font-normal text-sm text-gray-700 ">{post.frontmatter.description}</p>
     </div>
   </div>
 </a>
