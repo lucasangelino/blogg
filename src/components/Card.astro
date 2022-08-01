@@ -7,7 +7,7 @@ const { post } = Astro.props;
     <img class="object-cover w-full h-full rounded-sm" src={post.frontmatter.thumnail} alt={post.frontmatter.title}>
     <div class="flex flex-col h-full pl-4 place-content-center">
         <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">{post.frontmatter.title}</h5>
-        <h6 class="md:text-sm text-gray-700 my-0">{post.frontmatter.description}</h6>
+        <h6 class="md:text-sm text-gray-700 mb-5">{post.frontmatter.description}</h6>
     </div>
   </div>
 </a>
